@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Context } from "../provider";
 import { LoginComponent } from "../components/form/login";
 import { RegisterComponent } from "../components/form/register";
+import { Button } from "@mui/material";
+import { Margin } from "@mui/icons-material";
 
 export function Home() {
 
@@ -23,8 +25,12 @@ export function Home() {
                     <RegisterComponent></RegisterComponent>
                 )
             }
-            <button onClick={changeLogin}>Contained</button>
-        </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', margin: '50px' }}>
+                {login ? "Ainda não é cadastrado?" : "Ja é cadastrado?"}
+                <Button style={{ marginTop: '10px' }} variant="contained" onClick={changeLogin}>{login ? 'Cadastre-se' : 'Login'}</Button>
+            </div>
+        </div >
 
 
     );
