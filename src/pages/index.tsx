@@ -8,7 +8,6 @@ export function Home() {
     const { login, changeLogin } = useContext(Context)
 
     return (
-
         <div style={{
             display: 'flex',
             flexDirection: 'column',
