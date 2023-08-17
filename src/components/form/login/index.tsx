@@ -1,5 +1,4 @@
 import * as R from 'react'
-import react from 'react';
 import { Button } from "@mui/material";
 import { BoxComponent } from "../../box";
 import TextField from '@mui/material/TextField';
@@ -52,8 +51,9 @@ export function LoginComponent() {
 
             <Button
                 variant="contained"
-                onClick={submit}
-            >Contained</Button>
+                onClick={submit}>
+                Entrar
+            </Button>
         </BoxComponent>
     )
 }

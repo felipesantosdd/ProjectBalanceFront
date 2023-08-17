@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-import { ContextProps, ProviderType } from "../types";
+import { ContextProps, ProviderType } from "../../types";
 
 export const Context = createContext<ContextProps>({} as ContextProps)
 
@@ -13,6 +13,14 @@ export function Provider({ children }: ProviderType) {
         } else {
             setLogin(true)
         }
+    }
+
+    class User {
+        static async newUser(data): Promise<any> {
+            console.log(data)
+            return data
+        }
+
     }
 
     return (
