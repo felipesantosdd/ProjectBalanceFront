@@ -1,5 +1,5 @@
 import React from "react";
-import GlobalStyles from "./styles/global";
+import GlobalStyles from "../../styles/global";
 import { Provider } from "../provider";
 
 function MyApp({ Component, pageProps }) {
