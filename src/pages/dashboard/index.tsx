@@ -1,6 +1,11 @@
+import { AppBarComponent } from "../../components/appBar";
+
 export default function Dashboard() {
 
     return (
-        <h1>Dashboard</h1>
+        <>
+            <AppBarComponent></AppBarComponent>
+            <h1>Dashboard</h1>
+        </>
     )
 }

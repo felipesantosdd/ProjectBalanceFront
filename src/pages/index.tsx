@@ -3,7 +3,6 @@ import { Context } from "../provider";
 import { LoginComponent } from "../components/form/login";
 import { RegisterComponent } from "../components/form/register";
 import { Button } from "@mui/material";
-import { Margin } from "@mui/icons-material";
 
 export function Home() {
 
