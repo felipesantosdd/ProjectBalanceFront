@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-import { ContextProps, ProviderType } from "../../types";
+import { ContextProps, ProviderType, UserLogin, UserRequest, UserResponse } from "../../types";
 
 export const Context = createContext<ContextProps>({} as ContextProps)
 
@@ -16,9 +16,26 @@ export function Provider({ children }: ProviderType) {
     }
 
     class User {
-        static async newUser(data): Promise<any> {
-            console.log(data)
-            return data
+
+        static async login(user: UserLogin): Promise<UserResponse> {
+            console.log(user)
+            return user
+        }
+
+        static async new(user: UserRequest): Promise<UserResponse> {
+            console.log(user)
+            return user
+        }
+
+        static async get(id: string): Promise<UserResponse> {
+            console.log(id)
+            const user: UserResponse = {}
+            return user
+        }
+
+        static async delete(id: string): Promise<void> {
+            console.log(id)
+            return
         }
 
     }
@@ -27,7 +44,13 @@ export function Provider({ children }: ProviderType) {
         <Context.Provider value={{
             login,
             setLogin,
-            changeLogin
+            changeLogin,
+            User: {
+                login: User.login,
+                new: User.new,
+                get: User.get,
+                delete: User.delete
+            }
         }}>{children}</Context.Provider>
     )
 }

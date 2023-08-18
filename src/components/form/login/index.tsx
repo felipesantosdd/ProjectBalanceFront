@@ -2,6 +2,7 @@ import * as R from 'react'
 import { Button } from "@mui/material";
 import { BoxComponent } from "../../box";
 import TextField from '@mui/material/TextField';
+import { loginSchema } from '../../../../types/schemas';
 
 export function LoginComponent() {
 
@@ -9,6 +10,8 @@ export function LoginComponent() {
         userName: '',
         password: ''
     })
+
+    const [erros, setErros] = R.useState([])
 
     function handleChangeData(event) {
         const { name, value } = event.target
@@ -19,7 +22,13 @@ export function LoginComponent() {
     }
 
     function submit() {
-        console.log(loginData)
+        try {
+            loginSchema.parse(loginData)
+            console.log(loginData)
+        } catch (error) {
+            setErros(JSON.parse(error))
+            console.log(erros)
+        }
     }
 
     return (
@@ -33,19 +42,23 @@ export function LoginComponent() {
                     width: '300px'
                 }}>
                 <TextField
+                    error={erros.some((ele) => ele.path[0] === "username")}
                     defaultValue={loginData.userName}
                     label="username"
                     name="userName"
                     variant="standard"
                     onChange={handleChangeData}
+                    helperText={erros.some((ele) => ele.path[0] === "username") ? erros.find((ele) => ele.path[0] === "username").message : ""}
                 />
                 <TextField
+                    error={erros.some((ele) => ele.path[0] === "password")}
                     defaultValue={loginData.password}
                     label="password"
                     name='password'
                     variant="standard"
                     type='password'
                     onChange={handleChangeData}
+                    helperText={erros.some((ele) => ele.path[0] === "password") ? erros.find((ele) => ele.path[0] === "password").message : ""}
                 />
             </form>
 

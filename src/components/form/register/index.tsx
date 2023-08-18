@@ -28,8 +28,6 @@ export function RegisterComponent() {
         } catch (error) {
 
             setErros(JSON.parse(error))
-            // erros.map((ele) => console.log(ele))
-            console.log(erros)
         }
     }
 
@@ -61,7 +59,7 @@ export function RegisterComponent() {
                     helperText={erros.some((ele) => ele.path[0] === "username") ? erros.find((ele) => ele.path[0] === "username").message : ""}
                 />
                 <TextField
-                    error={erros.some((ele) => ele.path[0] === "username")}
+                    error={erros.some((ele) => ele.path[0] === "password")}
                     defaultValue={userData.password}
                     label="password"
                     name='password'
